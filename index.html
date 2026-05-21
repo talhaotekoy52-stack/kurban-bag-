@@ -7,13 +7,6 @@
     <!-- Tailwind CSS ve FontAwesome İkonları -->
     <script src="https://tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        .hero-bg {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://unsplash.com');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
@@ -44,17 +37,17 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero-bg h-[450px] flex items-center text-white relative">
+    <!-- HERO SECTION (RESME BAĞIMLI OLMAYAN MODERN GRADIENT ALAN) -->
+    <section class="h-[450px] flex items-center text-white relative bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900">
         <div class="max-w-6xl mx-auto px-4 w-full">
             <div class="max-w-xl">
                 <h2 class="text-4xl font-bold mb-4 leading-tight">Kurban Bağışı ile İyiliği Paylaş</h2>
-                <p class="text-gray-200 mb-6 text-lg">Kurbanlıklarınızı ihtiyaç sahiplerine ulaştırıyor, sofralara bereket, gönüllere umut oluyoruz.</p>
+                <p class="text-emerald-100 mb-6 text-lg">Kurbanlıklarınızı ihtiyaç sahiplerine ulaştırıyor, sofralara bereket, gönüllere umut oluyoruz.</p>
                 <div class="flex space-x-4">
-                    <a href="#bagis" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded font-medium transition flex items-center gap-2">
+                    <a href="#bagis" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded font-medium transition flex items-center gap-2 shadow-lg">
                         <i class="fa-solid fa-heart"></i> Kurban Bağışı
                     </a>
-                    <a href="#" class="border border-white hover:bg-white hover:text-gray-900 text-white px-6 py-3 rounded font-medium transition">Detaylı Bilgi</a>
+                    <a href="#" class="border border-white/50 hover:bg-white hover:text-emerald-950 text-white px-6 py-3 rounded font-medium transition">Detaylı Bilgi</a>
                 </div>
             </div>
         </div>
@@ -62,7 +55,7 @@
 
     <!-- FLOATING FEATURE BADGE -->
     <div class="max-w-4xl mx-auto px-4 -mt-12 relative z-10">
-        <div class="bg-white rounded-lg shadow-lg p-6 text-center max-w-xs mx-auto border-t-4 border-emerald-600">
+        <div class="bg-white rounded-lg shadow-xl p-6 text-center max-w-xs mx-auto border-t-4 border-emerald-600">
             <div class="text-emerald-600 text-3xl mb-2"><i class="fa-solid fa-cow"></i></div>
             <h3 class="font-bold text-lg text-gray-800">Kurban Bağışı</h3>
             <p class="text-sm text-gray-500 mt-1">Kurbanlıklarınızı ihtiyaç sahiplerine ulaştırın</p>
@@ -72,42 +65,44 @@
     <!-- MAIN CONTENT SECTION (DETAILS & BANK INFO) -->
     <main id="bagis" class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-3 gap-8 items-start">
         
-        <!-- LEFT: VISUAL -->
-        <div class="md:col-span-1">
-            <img src="https://unsplash.com" alt="Kurbanlık" class="rounded-lg shadow-md object-cover h-full w-full min-h-[350px]">
+        <!-- LEFT: VISUAL (ARTIK ARKA PLANDAN ÇEKİLEN MODERN BİR KUTU) -->
+        <div class="md:col-span-1 bg-gradient-to-br from-emerald-700 to-teal-800 text-white rounded-lg shadow-md p-8 flex flex-col justify-center min-h-[350px]">
+            <div class="text-5xl mb-4 text-emerald-300 text-center"><i class="fa-solid fa-hand-holding-heart"></i></div>
+            <h4 class="text-xl font-bold text-center mb-2">Şevkat Işığı Derneği</h4>
+            <p class="text-sm text-emerald-100 text-center leading-relaxed">Bağışladığınız her hisse, bir ailenin tebessümü, bir çocuğun mutluluğu oluyor.</p>
         </div>
 
         <!-- MIDDLE: INFORMATION -->
         <div class="md:col-span-1 space-y-6">
-            <div>
-                <h3 class="text-2xl font-bold text-emerald-800 mb-2">Kurban Bağışı</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">Kurban bağışlarınız, vekaletinizle kesilerek ihtiyaç sahiplerine ulaştırılır. Bağışlarınız İslami usullere uygun şekilde titizlikle gerçekleştirilir.</p>
-            </div>
+          <div>
+            <h3 class="text-2xl font-bold text-emerald-800 mb-2">Kurban Bağışı</h3>
+            <p class="text-gray-600 text-sm leading-relaxed">Kurban bağışlarınız, vekaletinizle kesilerek ihtiyaç sahiplerine ulaştırılır. Bağışlarınız İslami usullere uygun şekilde titizlikle gerçekleştirilir.</p>
+          </div>
 
-            <!-- Features -->
-            <div class="space-y-4">
-                <div class="flex items-start space-x-3">
-                    <div class="bg-emerald-100 text-emerald-700 p-2 rounded-full mt-1 flex items-center justify-center w-8 h-8"><i class="fa-solid fa-shield-heart text-sm"></i></div>
-                    <div>
-                        <h4 class="font-semibold text-sm text-gray-800">Güvenilir</h4>
-                        <p class="text-xs text-gray-500 mt-0.5">Tüm bağışlarınız şeffaf ve güvenilir bir şekilde gerçekleştirilir.</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-3">
-                    <div class="bg-emerald-100 text-emerald-700 p-2 rounded-full mt-1 flex items-center justify-center w-8 h-8"><i class="fa-solid fa-users text-sm"></i></div>
-                    <div>
-                        <h4 class="font-semibold text-sm text-gray-800">İhtiyaç Sahiplerine Ulaşım</h4>
-                        <p class="text-xs text-gray-500 mt-0.5">Kurbanlıklarınız, ihtiyaç sahiplerine özenle ulaştırılır.</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-3">
-                    <div class="bg-emerald-100 text-emerald-700 p-2 rounded-full mt-1 flex items-center justify-center w-8 h-8"><i class="fa-solid fa-check text-sm"></i></div>
-                    <div>
-                        <h4 class="font-semibold text-sm text-gray-800">İslami Usullere Uygun</h4>
-                        <p class="text-xs text-gray-500 mt-0.5">Kurban kesimleri İslami usullere uygun olarak yapılır.</p>
-                    </div>
-                </div>
+          <!-- Features -->
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <div class="bg-emerald-100 text-emerald-700 p-2 rounded-full flex items-center justify-center w-8 h-8"><i class="fa-solid fa-shield-heart text-sm"></i></div>
+              <div>
+                <h4 class="font-semibold text-sm text-gray-800">Güvenilir</h4>
+                <p class="text-xs text-gray-500 mt-0.5">Tüm bağışlarınız şeffaf ve güvenilir bir şekilde gerçekleştirilir.</p>
+              </div>
             </div>
+            <div class="flex items-start space-x-3">
+              <div class="bg-emerald-100 text-emerald-700 p-2 rounded-full flex items-center justify-center w-8 h-8"><i class="fa-solid fa-users text-sm"></i></div>
+              <div>
+                <h4 class="font-semibold text-sm text-gray-800">İhtiyaç Sahiplerine Ulaşım</h4>
+                <p class="text-xs text-gray-500 mt-0.5">Kurbanlıklarınız, ihtiyaç sahiplerine özenle ulaştırılır.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="bg-emerald-100 text-emerald-700 p-2 rounded-full flex items-center justify-center w-8 h-8"><i class="fa-solid fa-check text-sm"></i></div>
+              <div>
+                <h4 class="font-semibold text-sm text-gray-800">İslami Usullere Uygun</h4>
+                <p class="text-xs text-gray-500 mt-0.5">Kurban kesimleri İslami usullere uygun olarak yapılır.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- RIGHT: BANK DETAILS & COPY BUTTON -->
