@@ -4,211 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Şevkat Işığı - Kurban Bağışı</title>
-   <link href="https://jsdelivr.net" rel="stylesheet">
-    <script src="https://tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <!-- İnternet engeline takılmayan saf, yerleşik CSS tasarımı -->
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { bg-color: #f9fafb; color: #1f2937; line-height: 1.5; background: #f3f4f6; }
+        header { background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 50; }
+        .nav-container { max-w: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; items-center; }
+        .logo-area { display: flex; items-center; gap: 10px; }
+        .logo-title { font-weight: bold; color: #065f46; font-size: 20px; }
+        .logo-sub { font-size: 11px; color: #6b7280; }
+        .nav-links { display: flex; gap: 20px; list-style: none; }
+        .nav-links a { text-decoration: none; color: #4b5563; font-weight: 500; }
+        .nav-links a:hover { color: #059669; }
+        .nav-right { display: flex; items-center; gap: 15px; }
+        .btn-main { background: #059669; color: #ffffff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 14px; border: none; cursor: pointer; transition: 0.2s; }
+        .btn-main:hover { background: #047857; }
+        
+        .hero { background: linear-gradient(135deg, #064e3b 0%, #047857 100%); color: #ffffff; padding: 80px 20px; text-align: left; }
+        .hero-container { max-w: 1200px; margin: 0 auto; }
+        .hero h2 { font-size: 36px; font-weight: bold; margin-bottom: 15px; max-w: 600px; }
+        .hero p { font-size: 18px; color: #d1fae5; margin-bottom: 25px; max-w: 600px; }
+        
+        .badge-container { max-w: 1200px; margin: -30px auto 0; padding: 0 20px; position: relative; z-index: 10; }
+        .badge { background: #ffffff; border-radius: 8px; box-shadow: 0 10px 15px rgba(0,0,0,0.05); padding: 20px; max-w: 300px; text-align: center; border-top: 4px solid #059669; }
+        .badge h3 { font-size: 18px; margin-bottom: 5px; color: #111827; }
+        .badge p { font-size: 13px; color: #6b7280; }
+        
+        .main-content { max-w: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; }
+        @media (max-w: 768px) { .main-content { grid-template-columns: 1fr; } .nav-links { display: none; } }
+        
+        .info-card { background: linear-gradient(to bottom right, #047857, #065f46); color: white; padding: 30px; border-radius: 8px; min-height: 300px; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+        .info-card h4 { font-size: 20px; margin-bottom: 10px; }
+        .info-card p { font-size: 14px; color: #d1fae5; }
+        
+        .details-list { display: flex; flex-direction: column; gap: 20px; }
+        .details-item { background: #ffffff; padding: 15px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .details-item h4 { color: #065f46; font-size: 16px; margin-bottom: 5px; }
+        .details-item p { font-size: 13px; color: #4b5563; }
+        
+        .bank-card { background: #065f46; color: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .bank-card h3 { font-size: 20px; margin-bottom: 20px; border-bottom: 1px solid #047857; padding-bottom: 10px; }
+        .iban-label { font-size: 11px; color: #a7f3d0; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .iban-box { font-family: monospace; font-size: 16px; font-weight: bold; background: #044e37; padding: 12px; border-radius: 4px; word-break: break-all; margin-bottom: 15px; text-align: center; }
+        
+        .btn-copy { w-width: 100%; width: 100%; background: #059669; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; margin-bottom: 20px; }
+        .btn-copy:hover { background: #047857; }
+        .btn-copied { background: #16a34a !important; }
+        
+        .bank-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
+        .bank-row span:first-child { color: #a7f3d0; }
+        
+        footer { background: #111827; color: #9ca3af; padding: 40px 20px; margin-top: 60px; font-size: 14px; text-align: center; }
+        .footer-text { max-w: 1200px; margin: 0 auto; color: #6b7280; font-size: 12px; margin-top: 20px; border-t: 1px solid #1f2937; padding-top: 20px; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body>
 
-    <!-- HEADER / NAVIGATION -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="text-emerald-600 text-3xl"><i class="fa-solid fa-hand-holding-heart"></i></div>
+    <!-- HEADER -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
                 <div>
-                    <h1 class="font-bold text-xl tracking-tight text-emerald-800">ŞEVKAT IŞIĞI</h1>
-                    <p class="text-xs text-gray-500 -mt-1">İyiliği birlikte büyütüyoruz</p>
+                    <div class="logo-title">ŞEVKAT IŞIĞI</div>
+                    <div class="logo-sub">İyiliği birlikte büyütüyoruz</div>
                 </div>
             </div>
-            <nav class="hidden md:flex space-x-6 font-medium text-gray-600">
-                <a href="#" class="hover:text-emerald-600 transition">Anasayfa</a>
-                <a href="#" class="hover:text-emerald-600 transition">Hakkımızda</a>
-                <a href="#" class="hover:text-emerald-600 transition">İletişim</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <a href="#bagis" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md font-medium text-sm transition flex items-center gap-2">
-                    <i class="fa-solid fa-heart"></i> Kurban Bağışı
-                </a>
-                <select class="bg-gray-100 border rounded p-1 text-sm text-gray-700">
-                    <option>TR</option>
-                    <option>EN</option>
-                </select>
+            <ul class="nav-links">
+                <li><a href="#">Anasayfa</a></li>
+                <li><a href="#">Hakkımızda</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#bagis" class="btn-main">Kurban Bağışı</a>
             </div>
         </div>
     </header>
 
-    <!-- HERO SECTION (RESME BAĞIMLI OLMAYAN MODERN GRADIENT ALAN) -->
-    <section class="h-[450px] flex items-center text-white relative bg-gradient-to-r from-emerald-900 via-emerald-800 to-teal-900">
-        <div class="max-w-6xl mx-auto px-4 w-full">
-            <div class="max-w-xl">
-                <h2 class="text-4xl font-bold mb-4 leading-tight">Kurban Bağışı ile İyiliği Paylaş</h2>
-                <p class="text-emerald-100 mb-6 text-lg">Kurbanlıklarınızı ihtiyaç sahiplerine ulaştırıyor, sofralara bereket, gönüllere umut oluyoruz.</p>
-                <div class="flex space-x-4">
-                    <a href="#bagis" class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded font-medium transition flex items-center gap-2 shadow-lg">
-                        <i class="fa-solid fa-heart"></i> Kurban Bağışı
-                    </a>
-                    <a href="#" class="border border-white/50 hover:bg-white hover:text-emerald-950 text-white px-6 py-3 rounded font-medium transition">Detaylı Bilgi</a>
-                </div>
-            </div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-container">
+            <h2>Kurban Bağışı ile İyiliği Paylaş</h2>
+            <p>Kurbanlıklarınızı ihtiyaç sahiplerine ulaştırıyor, sofralara bereket, gönüllere umut oluyoruz.</p>
+            <a href="#bagis" class="btn-main" style="background: #059669; padding: 12px 25px;">Hemen Bağış Yap</a>
         </div>
     </section>
 
-    <!-- FLOATING FEATURE BADGE -->
-    <div class="max-w-4xl mx-auto px-4 -mt-12 relative z-10">
-        <div class="bg-white rounded-lg shadow-xl p-6 text-center max-w-xs mx-auto border-t-4 border-emerald-600">
-            <div class="text-emerald-600 text-3xl mb-2"><i class="fa-solid fa-cow"></i></div>
-            <h3 class="font-bold text-lg text-gray-800">Kurban Bağışı</h3>
-            <p class="text-sm text-gray-500 mt-1">Kurbanlıklarınızı ihtiyaç sahiplerine ulaştırın</p>
+    <!-- FLOATING BADGE -->
+    <div class="badge-container">
+        <div class="badge">
+            <h3>Kurban Bağışı</h3>
+            <p>Kurbanlıklarınızı ihtiyaç sahiplerine ulaştırın</p>
         </div>
     </div>
 
-    <!-- MAIN CONTENT SECTION (DETAILS & BANK INFO) -->
-    <main id="bagis" class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-3 gap-8 items-start">
+    <!-- MAIN CONTENT -->
+    <main id="bagis" class="main-content">
         
-        <!-- LEFT: VISUAL (ARTIK ARKA PLANDAN ÇEKİLEN MODERN BİR KUTU) -->
-        <div class="md:col-span-1 bg-gradient-to-br from-emerald-700 to-teal-800 text-white rounded-lg shadow-md p-8 flex flex-col justify-center min-h-[350px]">
-            <div class="text-5xl mb-4 text-emerald-300 text-center"><i class="fa-solid fa-hand-holding-heart"></i></div>
-            <h4 class="text-xl font-bold text-center mb-2">Şevkat Işığı Derneği</h4>
-            <p class="text-sm text-emerald-100 text-center leading-relaxed">Bağışladığınız her hisse, bir ailenin tebessümü, bir çocuğun mutluluğu oluyor.</p>
+        <!-- LEFT: VISUAL REPLACEMENT -->
+        <div class="info-card">
+            <h4>Şevkat Işığı Derneği</h4>
+            <p style="margin-top: 10px;">Bağışladığınız her hisse, bir ailenin tebessümü, bir çocuğun mutluluğu oluyor.</p>
         </div>
 
-        <!-- MIDDLE: INFORMATION -->
-        <div class="md:col-span-1 space-y-6">
-          <div>
-            <h3 class="text-2xl font-bold text-emerald-800 mb-2">Kurban Bağışı</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">Kurban bağışlarınız, vekaletinizle kesilerek ihtiyaç sahiplerine ulaştırılır. Bağışlarınız İslami usullere uygun şekilde titizlikle gerçekleştirilir.</p>
-          </div>
-
-          <!-- Features -->
-          <div class="space-y-4">
-            <div class="flex items-start space-x-3">
-              <div class="bg-emerald-100 text-emerald-700 p-2 rounded-full flex items-center justify-center w-8 h-8"><i class="fa-solid fa-shield-heart text-sm"></i></div>
-              <div>
-                <h4 class="font-semibold text-sm text-gray-800">Güvenilir</h4>
-                <p class="text-xs text-gray-500 mt-0.5">Tüm bağışlarınız şeffaf ve güvenilir bir şekilde gerçekleştirilir.</p>
-              </div>
+        <!-- MIDDLE: DETAILS -->
+        <div class="details-list">
+            <div class="details-item">
+                <h4>✓ Güvenilir</h4>
+                <p>Tüm bağışlarınız şeffaf ve güvenilir bir şekilde gerçekleştirilir.</p>
             </div>
-            <div class="flex items-start space-x-3">
-              <div class="bg-emerald-100 text-emerald-700 p-2 rounded-full flex items-center justify-center w-8 h-8"><i class="fa-solid fa-users text-sm"></i></div>
-              <div>
-                <h4 class="font-semibold text-sm text-gray-800">İhtiyaç Sahiplerine Ulaşım</h4>
-                <p class="text-xs text-gray-500 mt-0.5">Kurbanlıklarınız, ihtiyaç sahiplerine özenle ulaştırılır.</p>
-              </div>
+            <div class="details-item">
+                <h4>✓ İhtiyaç Sahiplerine Ulaşım</h4>
+                <p>Kurbanlıklarınız, ihtiyaç sahiplerine özenle ulaştırılır.</p>
             </div>
-            <div class="flex items-start space-x-3">
-              <div class="bg-emerald-100 text-emerald-700 p-2 rounded-full flex items-center justify-center w-8 h-8"><i class="fa-solid fa-check text-sm"></i></div>
-              <div>
-                <h4 class="font-semibold text-sm text-gray-800">İslami Usullere Uygun</h4>
-                <p class="text-xs text-gray-500 mt-0.5">Kurban kesimleri İslami usullere uygun olarak yapılır.</p>
-              </div>
+            <div class="details-item">
+                <h4>✓ İslami Usullere Uygun</h4>
+                <p>Kurban kesimleri İslami usullere uygun olarak yapılır.</p>
             </div>
-          </div>
         </div>
 
         <!-- RIGHT: BANK DETAILS & COPY BUTTON -->
-        <div class="md:col-span-1 bg-emerald-800 text-white rounded-lg p-6 shadow-md">
-            <h3 class="text-xl font-bold mb-6 pb-2 border-b border-emerald-700">Bağış Bilgileri</h3>
+        <div class="bank-card">
+            <h3>Bağış Bilgileri</h3>
             
-            <div class="mb-4">
-                <label class="text-xs text-emerald-300 font-bold block uppercase tracking-wider mb-1">IBAN</label>
-                <p id="ibanText" class="font-mono text-base font-bold bg-emerald-900 p-3 rounded tracking-wide break-all">TR12 3456 7890 1234 5678 9012 34</p>
-                <p class="text-[11px] text-emerald-200 mt-1"><i class="fa-solid fa-info-circle"></i> IBAN'ı kopyalamak için aşağıdaki butona tıklayın.</p>
-            </div>
+            <span class="iban-label">IBAN</span>
+            <div id="ibanText" class="iban-box">TR12 3456 7890 1234 5678 9012 34</div>
 
-            <!-- Kopyalama Butonu -->
-            <button id="copyBtn" onclick="copyIban()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-2.5 px-4 rounded transition flex items-center justify-center gap-2 mb-6 shadow-sm">
-                <i id="copyIcon" class="fa-regular fa-copy"></i> <span id="copyBtnText">IBAN'ı Kopyala</span>
-            </button>
+            <!-- Kopyalayınca Yeşile Dönen Buton -->
+            <button id="copyBtn" onclick="copyIban()" class="btn-copy">IBAN'ı Kopyala</button>
 
-            <div class="space-y-3 text-sm border-t border-emerald-700 pt-4">
-                <div class="flex justify-between"><span class="text-emerald-300">Hesap Sahibi:</span> <span class="font-medium text-right">Şevkat Işığı Derneği</span></div>
-                <div class="flex justify-between"><span class="text-emerald-300">Banka:</span> <span class="font-medium">Ziraat Bankası</span></div>
-                <div class="flex justify-between"><span class="text-emerald-300">Şube:</span> <span class="font-medium">Merkez Şubesi</span></div>
-                <div class="flex justify-between"><span class="text-emerald-300">Açıklama:</span> <span class="font-medium bg-emerald-900 px-2 py-0.5 rounded text-xs">Kurban Bağışı</span></div>
-            </div>
+            <div class="bank-row"><span>Hesap Sahibi:</span> <span>Şevkat Işığı Derneği</span></div>
+            <div class="bank-row"><span>Banka:</span> <span>Ziraat Bankası</span></div>
+            <div class="bank-row"><span>Şube:</span> <span>Merkez Şubesi</span></div>
+            <div class="bank-row"><span>Açıklama:</span> <span style="background: #044e37; padding: 2px 6px; border-radius: 4px; font-size: 12px;">Kurban Bağışı</span></div>
         </div>
     </main>
 
-    <!-- CALL TO ACTION BANNER -->
-    <section class="bg-emerald-900 text-white py-6">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex items-center space-x-4">
-                <div class="text-3xl"><i class="fa-solid fa-cow"></i></div>
-                <div>
-                    <h4 class="font-bold text-lg">Kurbanınızı Paylaşın, Bereketi Çoğaltın</h4>
-                    <p class="text-sm text-emerald-200">Kurban bağışınızla bir sofraya umut, bir hayata dokunuş olun.</p>
-                </div>
-            </div>
-            <a href="#bagis" class="bg-white text-emerald-900 hover:bg-gray-100 font-bold px-6 py-2.5 rounded transition shadow flex items-center gap-2 whitespace-nowrap">
-                <i class="fa-solid fa-heart text-red-500"></i> Hemen Kurban Bağışı Yap
-            </a>
-        </div>
-    </section>
-
     <!-- FOOTER -->
-    <footer class="bg-slate-900 text-gray-400 pt-12 pb-6 text-sm">
-        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-8 mb-8">
-            <div class="space-y-3">
-                <div class="flex items-center space-x-2 text-white">
-                    <div class="text-emerald-500 text-2xl"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                    <span class="font-bold text-lg">ŞEVKAT IŞIĞI</span>
-                </div>
-                <p class="text-xs leading-relaxed">Kurban bağışlarınızla ihtiyaç sahiplerine umut oluyor, birlikte daha güçlü bir iyilik hareketi oluşturuyoruz.</p>
-                <div class="flex space-x-3 text-lg pt-2">
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
-                </div>
-            </div>
-            <div>
-                <h5 class="text-white font-semibold mb-3">Kurumsal</h5>
-                <ul class="space-y-2 text-xs">
-                    <li><a href="#" class="hover:text-white transition">Hakkımızda</a></li>
-                    <li><a href="#" class="hover:text-white transition">İletişim</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5 class="text-white font-semibold mb-3">Bağış</h5>
-                <ul class="space-y-2 text-xs">
-                    <li><a href="#bagis" class="hover:text-white transition">Kurban Bağışı</a></li>
-                </ul>
-            </div>
-            <div class="space-y-2 text-xs">
-                <h5 class="text-white font-semibold mb-3">İletişim</h5>
-                <p class="flex items-center gap-2"><i class="fa-solid fa-phone text-emerald-500"></i> +90 555 123 45 67</p>
-                <p class="flex items-center gap-2"><i class="fa-solid fa-envelope text-emerald-500"></i> info@sevkatisigi.org</p>
-                <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-emerald-500"></i> Merkez Mah. İyilik Sk. No:1 İstanbul / Türkiye</p>
-            </div>
-        </div>
-        <div class="max-w-6xl mx-auto px-4 pt-6 border-t border-slate-800 text-center text-xs text-gray-500">
+    <footer>
+        <p><b>ŞEVKAT IŞIĞI DERNEĞİ</b></p>
+        <p style="font-size: 12px; margin-top: 5px;">Kurban bağışlarınızla ihtiyaç sahiplerine umut oluyoruz.</p>
+        <div class="footer-text">
             &copy; 2024 Şevkat Işığı. Tüm hakları saklıdır.
         </div>
     </footer>
 
-    <!-- JAVASCRIPT: COPY FUNCTION -->
+    <!-- JAVASCRIPT: ASLA HATA VERMEYEN KOPYALAMA MOTORU -->
     <script>
         function copyIban() {
             const ibanText = document.getElementById('ibanText').innerText;
-            navigator.clipboard.writeText(ibanText).then(() => {
-                const btn = document.getElementById('copyBtn');
-                const btnText = document.getElementById('copyBtnText');
-                const icon = document.getElementById('copyIcon');
-                
-                btnText.innerText = "Kopyalandı!";
-                btn.classList.remove('bg-emerald-600', 'hover:bg-emerald-500');
-                btn.classList.add('bg-green-600');
-                icon.className = "fa-solid fa-check";
-                
-                setTimeout(() => {
-                    btnText.innerText = "IBAN'ı Kopyala";
-                    btn.classList.remove('bg-green-600');
-                    btn.classList.add('bg-emerald-600', 'hover:bg-emerald-500');
-                    icon.className = "fa-regular fa-copy";
-                }, 2000);
-            }).catch(err => {
-                console.error('Kopyalama başarısız oldu: ', err);
-            });
+            
+            // Modern kopyalama yöntemi
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(ibanText).then(showSuccess);
+            } else {
+                // Eski tarayıcılar için yedek kopyala-yapıştır yöntemi
+                const textArea = document.createElement("textarea");
+                textArea.value = ibanText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textArea);
+                showSuccess();
+            }
+        }
+
+        function showSuccess() {
+            const btn = document.getElementById('copyBtn');
+            btn.innerText = "✓ Kopyalandı!";
+            btn.classList.add('btn-copied');
+            
+            setTimeout(() => {
+                btn.innerText = "IBAN'ı Kopyala";
+                btn.classList.remove('btn-copied');
+            }, 2000);
         }
     </script>
 </body>
