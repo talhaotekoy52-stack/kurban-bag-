@@ -2,60 +2,71 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Şevkat Işığı - Kurban Bağışı</title>
-    <!-- İnternet engeline takılmayan saf, yerleşik CSS tasarımı -->
+    <!-- Mobil uyumlu, harici kütüphanesiz saf yerleşik CSS tasarımı -->
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { bg-color: #f9fafb; color: #1f2937; line-height: 1.5; background: #f3f4f6; }
+        body { background: #f3f4f6; color: #1f2937; line-height: 1.5; -webkit-text-size-adjust: 100%; }
         header { background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 50; }
-        .nav-container { max-w: 1200px; margin: 0 auto; padding: 15px 20px; display: flex; justify-content: space-between; items-center; }
+        .nav-container { max-w: 1200px; margin: 0 auto; padding: 12px 15px; display: flex; justify-content: space-between; items-center; align-items: center; }
         .logo-area { display: flex; items-center; gap: 10px; }
-        .logo-title { font-weight: bold; color: #065f46; font-size: 20px; }
-        .logo-sub { font-size: 11px; color: #6b7280; }
+        .logo-title { font-weight: bold; color: #065f46; font-size: 18px; tracking-tight: -0.5px; }
+        .logo-sub { font-size: 11px; color: #6b7280; margin-top: -2px; }
         .nav-links { display: flex; gap: 20px; list-style: none; }
-        .nav-links a { text-decoration: none; color: #4b5563; font-weight: 500; }
+        .nav-links a { text-decoration: none; color: #4b5563; font-weight: 500; font-size: 14px; }
         .nav-links a:hover { color: #059669; }
-        .nav-right { display: flex; items-center; gap: 15px; }
-        .btn-main { background: #059669; color: #ffffff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 14px; border: none; cursor: pointer; transition: 0.2s; }
+        .btn-main { background: #059669; color: #ffffff; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 13px; border: none; cursor: pointer; transition: 0.2s; white-space: nowrap; }
         .btn-main:hover { background: #047857; }
         
-        .hero { background: linear-gradient(135deg, #064e3b 0%, #047857 100%); color: #ffffff; padding: 80px 20px; text-align: left; }
+        .hero { background: linear-gradient(135deg, #064e3b 0%, #047857 100%); color: #ffffff; padding: 50px 20px; text-align: left; }
         .hero-container { max-w: 1200px; margin: 0 auto; }
-        .hero h2 { font-size: 36px; font-weight: bold; margin-bottom: 15px; max-w: 600px; }
-        .hero p { font-size: 18px; color: #d1fae5; margin-bottom: 25px; max-w: 600px; }
+        .hero h2 { font-size: 28px; font-weight: bold; margin-bottom: 12px; max-w: 600px; line-height: 1.2; }
+        .hero p { font-size: 15px; color: #d1fae5; margin-bottom: 20px; max-w: 600px; }
         
-        .badge-container { max-w: 1200px; margin: -30px auto 0; padding: 0 20px; position: relative; z-index: 10; }
-        .badge { background: #ffffff; border-radius: 8px; box-shadow: 0 10px 15px rgba(0,0,0,0.05); padding: 20px; max-w: 300px; text-align: center; border-top: 4px solid #059669; }
-        .badge h3 { font-size: 18px; margin-bottom: 5px; color: #111827; }
-        .badge p { font-size: 13px; color: #6b7280; }
+        .badge-container { max-w: 1200px; margin: -25px auto 0; padding: 0 15px; position: relative; z-index: 10; }
+        .badge { background: #ffffff; border-radius: 8px; box-shadow: 0 10px 15px rgba(0,0,0,0.05); padding: 15px; max-w: 280px; text-align: center; border-top: 4px solid #059669; margin: 0 auto; }
+        .badge h3 { font-size: 16px; margin-bottom: 3px; color: #111827; }
+        .badge p { font-size: 12px; color: #6b7280; }
         
-        .main-content { max-w: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; }
-        @media (max-w: 768px) { .main-content { grid-template-columns: 1fr; } .nav-links { display: none; } }
+        .main-content { max-w: 1200px; margin: 30px auto; padding: 0 15px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
         
-        .info-card { background: linear-gradient(to bottom right, #047857, #065f46); color: white; padding: 30px; border-radius: 8px; min-height: 300px; display: flex; flex-direction: column; justify-content: center; text-align: center; }
-        .info-card h4 { font-size: 20px; margin-bottom: 10px; }
-        .info-card p { font-size: 14px; color: #d1fae5; }
+        .info-card { background: linear-gradient(to bottom right, #047857, #065f46); color: white; padding: 25px; border-radius: 8px; min-height: 200px; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+        .info-card h4 { font-size: 18px; margin-bottom: 8px; }
+        .info-card p { font-size: 13px; color: #d1fae5; }
         
-        .details-list { display: flex; flex-direction: column; gap: 20px; }
+        .details-list { display: flex; flex-direction: column; gap: 15px; }
         .details-item { background: #ffffff; padding: 15px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .details-item h4 { color: #065f46; font-size: 16px; margin-bottom: 5px; }
-        .details-item p { font-size: 13px; color: #4b5563; }
+        .details-item h4 { color: #065f46; font-size: 15px; margin-bottom: 4px; }
+        .details-item p { font-size: 12px; color: #4b5563; }
         
-        .bank-card { background: #065f46; color: #ffffff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .bank-card h3 { font-size: 20px; margin-bottom: 20px; border-bottom: 1px solid #047857; padding-bottom: 10px; }
+        .bank-card { background: #065f46; color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .bank-card h3 { font-size: 18px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
         .iban-label { font-size: 11px; color: #a7f3d0; font-weight: bold; text-transform: uppercase; margin-bottom: 5px; display: block; }
-        .iban-box { font-family: monospace; font-size: 16px; font-weight: bold; background: #044e37; padding: 12px; border-radius: 4px; word-break: break-all; margin-bottom: 15px; text-align: center; }
+        .iban-box { font-family: monospace; font-size: 14px; font-weight: bold; background: #044e37; padding: 10px; border-radius: 4px; word-break: break-all; margin-bottom: 15px; text-align: center; letter-spacing: 0.5px; }
         
-        .btn-copy { w-width: 100%; width: 100%; background: #059669; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s; margin-bottom: 20px; }
+        .btn-copy { width: 100%; background: #059669; color: white; border: none; padding: 12px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.2s; margin-bottom: 15px; -webkit-appearance: none; }
         .btn-copy:hover { background: #047857; }
         .btn-copied { background: #16a34a !important; }
         
-        .bank-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
-        .bank-row span:first-child { color: #a7f3d0; }
+        .bank-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px; }
+        .bank-row span:first-child { color: #a7f3d0; padding-right: 10px; }
+        .bank-row span:last-child { text-align: right; }
         
-        footer { background: #111827; color: #9ca3af; padding: 40px 20px; margin-top: 60px; font-size: 14px; text-align: center; }
-        .footer-text { max-w: 1200px; margin: 0 auto; color: #6b7280; font-size: 12px; margin-top: 20px; border-t: 1px solid #1f2937; padding-top: 20px; }
+        footer { background: #111827; color: #9ca3af; padding: 30px 15px; margin-top: 40px; font-size: 13px; text-align: center; }
+        .footer-text { max-w: 1200px; margin: 0 auto; color: #6b7280; font-size: 11px; margin-top: 15px; border-top: 1px solid #1f2937; padding-top: 15px; }
+
+        /* TELEFONLAR İÇİN ÖZEL ESNEKLİK KURALLARI (RESPONSIVE) */
+        @media (max-w: 992px) {
+            .main-content { grid-template-columns: 1fr; }
+        }
+        @media (max-w: 768px) {
+            .nav-links { display: none; }
+            .hero h2 { font-size: 24px; }
+            .hero p { font-size: 14px; }
+            .badge-container { margin-top: -15px; }
+            .badge { max-width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -85,7 +96,7 @@
         <div class="hero-container">
             <h2>Kurban Bağışı ile İyiliği Paylaş</h2>
             <p>Kurbanlıklarınızı ihtiyaç sahiplerine ulaştırıyor, sofralara bereket, gönüllere umut oluyoruz.</p>
-            <a href="#bagis" class="btn-main" style="background: #059669; padding: 12px 25px;">Hemen Bağış Yap</a>
+            <a href="#bagis" class="btn-main" style="background: #059669; padding: 10px 20px; font-size: 14px;">Hemen Bağış Yap</a>
         </div>
     </section>
 
@@ -103,7 +114,7 @@
         <!-- LEFT: VISUAL REPLACEMENT -->
         <div class="info-card">
             <h4>Şevkat Işığı Derneği</h4>
-            <p style="margin-top: 10px;">Bağışladığınız her hisse, bir ailenin tebessümü, bir çocuğun mutluluğu oluyor.</p>
+            <p style="margin-top: 8px;">Bağışladığınız her hisse, bir ailenin tebessümü, bir çocuğun mutluluğu oluyor.</p>
         </div>
 
         <!-- MIDDLE: DETAILS -->
@@ -135,37 +146,48 @@
             <div class="bank-row"><span>Hesap Sahibi:</span> <span>Şevkat Işığı Derneği</span></div>
             <div class="bank-row"><span>Banka:</span> <span>Ziraat Bankası</span></div>
             <div class="bank-row"><span>Şube:</span> <span>Merkez Şubesi</span></div>
-            <div class="bank-row"><span>Açıklama:</span> <span style="background: #044e37; padding: 2px 6px; border-radius: 4px; font-size: 12px;">Kurban Bağışı</span></div>
+            <div class="bank-row"><span>Açıklama:</span> <span style="background: #044e37; padding: 2px 6px; border-radius: 4px; font-size: 11px; white-space: nowrap;">Kurban Bağışı</span></div>
         </div>
     </main>
 
     <!-- FOOTER -->
     <footer>
         <p><b>ŞEVKAT IŞIĞI DERNEĞİ</b></p>
-        <p style="font-size: 12px; margin-top: 5px;">Kurban bağışlarınızla ihtiyaç sahiplerine umut oluyoruz.</p>
+        <p style="font-size: 11px; margin-top: 5px; color: #9ca3af;">Kurban bağışlarınızla ihtiyaç sahiplerine umut oluyoruz.</p>
         <div class="footer-text">
             &copy; 2024 Şevkat Işığı. Tüm hakları saklıdır.
         </div>
     </footer>
 
-    <!-- JAVASCRIPT: ASLA HATA VERMEYEN KOPYALAMA MOTORU -->
+    <!-- JAVASCRIPT: MOBİLDE DE TIKIR TIKIR ÇALIŞAN KOPYALAMA MOTORU -->
     <script>
         function copyIban() {
             const ibanText = document.getElementById('ibanText').innerText;
             
-            // Modern kopyalama yöntemi
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(ibanText).then(showSuccess);
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(ibanText).then(showSuccess).catch(function() {
+                    fallbackCopy(ibanText);
+                });
             } else {
-                // Eski tarayıcılar için yedek kopyala-yapıştır yöntemi
-                const textArea = document.createElement("textarea");
-                textArea.value = ibanText;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand("copy");
-                document.body.removeChild(textArea);
-                showSuccess();
+                fallbackCopy(ibanText);
             }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            // Mobilde ekran kaymasını önlemek için sabitliyoruz
+            textArea.style.position = "fixed"; 
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand("copy");
+                showSuccess();
+            } catch (err) {
+                alert("Kopyalanamadı, lütfen el ile seçin.");
+            }
+            document.body.removeChild(textArea);
         }
 
         function showSuccess() {
